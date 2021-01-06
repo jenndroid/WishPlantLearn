@@ -13,7 +13,11 @@
 
     <ul>
         {% for plant in plants %}
-            <li>{{ plant }}</li>
+            <li>
+                <p>{{ plant.name }}</p>
+                <img src="{{ plant.image_link }}" alt="img">
+                <p>{{ plant.notes }}</p>
+            </li>
         {% empty %}
             <li>No plants added yet.</li>
         {% endfor %}
