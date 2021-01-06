@@ -10,7 +10,7 @@ from .forms import PlantForm
 @login_required
 def wishlist(request):
     """Show all plants on wishlist"""
-    plants = Plant.objects.all()
+    plants = Plant.objects.filter(owner=request.user)
     context = {'plants' : plants}
     return render(request, 'wishlist/wishlist.html', context)
 
@@ -25,7 +25,9 @@ def new_plant(request):
         form = PlantForm(request.POST)
 
         if form.is_valid(): 
-            form.save()
+            new_plant = form.save(commit=False)
+            new_plant.owner = request.user
+            new_plant.save()
             return HttpResponseRedirect(reverse('wishlist:wishlist'))
 
     context = {'form': form}
