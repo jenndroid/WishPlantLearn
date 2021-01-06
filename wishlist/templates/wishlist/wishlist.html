@@ -1,0 +1,28 @@
+{% extends 'learning_logs/base.html' %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+</head>
+<body>
+
+    {% block content %}
+
+    <h1>Plants I want</h1>
+
+    <ul>
+        {% for plant in plants %}
+            <li>{{ plant }}</li>
+        {% empty %}
+            <li>No plants added yet.</li>
+        {% endfor %}
+    </ul>
+
+    {% endblock content %}
+    
+</body>
+</html>
+
+
