@@ -25,5 +25,6 @@ urlpatterns = [
     # groups of urls for apps 
     path('users/', include('users.urls')),
     path('', include('learning_logs.urls')),
+    path('wishlist/', include('wishlist.urls'))
     
 ]
