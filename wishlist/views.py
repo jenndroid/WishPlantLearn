@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 from .models import Plant
 from .forms import PlantForm
 
 # Create your views here.
+@login_required
 def wishlist(request):
     """Show all plants on wishlist"""
     plants = Plant.objects.all()
