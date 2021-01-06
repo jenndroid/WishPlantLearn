@@ -14,7 +14,7 @@ def wishlist(request):
     context = {'plants' : plants}
     return render(request, 'wishlist/wishlist.html', context)
 
-
+@login_required
 def new_plant(request):
     """Add new plant to wishlist"""
     if request.method != 'POST':
