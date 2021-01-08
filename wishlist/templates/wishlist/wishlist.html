@@ -16,7 +16,8 @@
             <li>
                 <p>{{ plant.name }}</p>
                 <img src="{{ plant.image_link }}" alt="img">
-                {% if plant.purchased == true %}
+                <a href="{% url 'wishlist:edit_plant' plant.id %}">Edit</a>
+                {% if plant.purchased %}
                     <p>Bought</p>
                 {% else %}
                     <p>Want to buy</p>

@@ -33,6 +33,7 @@ def new_plant(request):
     context = {'form': form}
     return render(request, 'wishlist/new_plant.html', context)
 
+@login_required
 def edit_plant(request, plant_id):
     """Edit plant on the wishlist"""
     plant = Plant.objects.get(id=plant_id)
@@ -46,6 +47,6 @@ def edit_plant(request, plant_id):
             return HttpResponseRedirect(reverse('wishlist:wishlist'))
     
     context = {'plant': plant, 'form': form}
-    return render(request, 'wishlist/edit_entry.html', context)
+    return render(request, 'wishlist/edit_plant.html', context)
 
 
