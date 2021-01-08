@@ -16,6 +16,11 @@
             <li>
                 <p>{{ plant.name }}</p>
                 <img src="{{ plant.image_link }}" alt="img">
+                {% if plant.purchased == true %}
+                    <p>Bought</p>
+                {% else %}
+                    <p>Want to buy</p>
+                {% endif %}
                 <p>{{ plant.notes }}</p>
             </li>
         {% empty %}
