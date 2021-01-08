@@ -11,7 +11,9 @@ from .forms import PlantForm
 def wishlist(request):
     """Show all plants on wishlist"""
     plants = Plant.objects.filter(owner=request.user)
-    context = {'plants' : plants}
+    purchased_plants = plants.filter(purchased='True')
+    wanted_plants = plants.filter(purchased='False')
+    context = {'purchased_plants' : purchased_plants, 'wanted_plants' : wanted_plants}
     return render(request, 'wishlist/wishlist.html', context)
 
 @login_required
@@ -48,5 +50,7 @@ def edit_plant(request, plant_id):
     
     context = {'plant': plant, 'form': form}
     return render(request, 'wishlist/edit_plant.html', context)
+
+
 
 

@@ -13,7 +13,7 @@
     <a href="{% url 'wishlist:new_plant' %}">Add a new plant</a>
 
     <ul>
-        {% for plant in plants %}
+        {% for plant in purchased_plants %}
             <li>
                 <p>{{ plant.name }}</p>
                 <img src="{{ plant.image_link }}" alt="img">
