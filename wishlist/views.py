@@ -32,3 +32,21 @@ def new_plant(request):
 
     context = {'form': form}
     return render(request, 'wishlist/new_plant.html', context)
+
+@login_required
+def edit_plant(request, plant_id):
+    """Edit plant on the wishlist"""
+    plant = Plant.objects.get(id=plant_id)
+
+    if request.method != 'POST':
+        form = PlantForm(instance=plant)
+    else:
+        form = PlantForm(instance=plant, data=request.POST)
+        if form.is_valid(): 
+            form.save()
+            return HttpResponseRedirect(reverse('wishlist:wishlist'))
+    
+    context = {'plant': plant, 'form': form}
+    return render(request, 'wishlist/edit_plant.html', context)
+
+

@@ -1,0 +1,23 @@
+{% extends 'learning_logs/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit wishlist</title>
+</head>
+<body>
+    {% block content %}
+    <a href="{% url 'wishlist:wishlist' %}">Back to wishlist</a>
+
+    <p>Edit plant:</p>
+
+    <form action="{% url 'wishlist:edit_plant' plant.id %}" method='post'>
+        {% csrf_token %}
+        {{  form.as_p  }}
+        <button name='submit'>Save changes</button>
+    </form>
+
+    {% endblock content %}
+</body>
+</html>

@@ -10,20 +10,25 @@
     {% block content %}
 
     <h1>Plants I want</h1>
+    <a href="{% url 'wishlist:new_plant' %}">Add a new plant</a>
 
     <ul>
         {% for plant in plants %}
             <li>
                 <p>{{ plant.name }}</p>
                 <img src="{{ plant.image_link }}" alt="img">
+                {% if plant.purchased %}
+                    <p>Bought</p>
+                {% else %}
+                    <p>Want to buy</p>
+                {% endif %}
                 <p>{{ plant.notes }}</p>
+                <a href="{% url 'wishlist:edit_plant' plant.id %}">Edit</a>
             </li>
         {% empty %}
             <li>No plants added yet.</li>
         {% endfor %}
     </ul>
-
-    <a href="{% url 'wishlist:new_plant' %}">Add a new plant</a>
     {% endblock content %}
 </body>
 </html>
