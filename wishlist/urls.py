@@ -10,5 +10,8 @@ urlpatterns = [
     path('wishlist/', views.wishlist, name='wishlist'), 
 
     # Add a new plant to the wishlist
-    path('new_plant', views.new_plant, name='new_plant')
+    path('new_plant', views.new_plant, name='new_plant'), 
+
+    # Edit a plant on the wishlist
+    path('edit_plant/<int:plant_id>/', views.edit_plant, name='edit_plant')
 ]
