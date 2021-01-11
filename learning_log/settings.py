@@ -131,7 +131,7 @@ STATIC_URL = '/static/'
 LOGIN_URL = '/users/login'
 
 # Heroku settings 
-if os.getcwd() == '/app':
+if os.getcwd() == '/app' or cwd[:4] == '/tmp':
     import dj_database_url
     DATABASES = {
         'default': dj_database_url.config(default='postgres://localhost')
@@ -144,14 +144,10 @@ if os.getcwd() == '/app':
     ALLOWED_HOSTS = ['*']
 
     # Static asset configuration
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-    # Static files (CSS, JavaScript, Images)
-    # https://docs.djangoproject.com/en/1.9/howto/static-files/
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATIC_URL = '/static/'
-
-    # Extra places for collectstatic to find static files.
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = 'staticfiles'
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
     )
+
+    
