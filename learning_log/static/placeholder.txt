@@ -1,0 +1,2 @@
+This file ensures that this folder is added to the project.
+Django will store static files here. 
