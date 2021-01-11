@@ -131,7 +131,8 @@ STATIC_URL = '/static/'
 LOGIN_URL = '/users/login'
 
 # Heroku settings 
-if os.getcwd() == '/app' or cwd[:4] == '/tmp':
+cwd = os.getcwd()
+if cwd == '/app' or cwd[:4] == '/tmp':
     import dj_database_url
     DATABASES = {
         'default': dj_database_url.config(default='postgres://localhost')
