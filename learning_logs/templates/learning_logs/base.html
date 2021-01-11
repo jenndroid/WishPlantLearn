@@ -6,6 +6,9 @@
     <title>{{ topic }} Notes</title>
   </head>
   <body>
+    <header class="page__header">
+      {% block header %}{% endblock header %}
+    </header>
     <p>
       <!-- gets the url from the learning_log namespace -->
       <a href="{% url 'learning_logs:index' %}">Learning Log</a> -
