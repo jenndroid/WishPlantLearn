@@ -13,32 +13,37 @@
     <a href="{% url 'wishlist:new_plant' %}">Add a new plant</a>
 
     <p>Wanted</p>
-    <ul>
+    <section class="wishlist__container">
         {% for plant in wanted_plants %}
-            <li>
+            <article class="wishlist__item">
                 <p>{{ plant.name }}</p>
-                <img src="{{ plant.image_link }}" alt="img">
+                <div class="wishlist__item-image-container">
+                    <img src="{{ plant.image_link }}" alt="img" class="wishlist__item-image">
+                </div>
                 <p>{{ plant.notes }}</p>
                 <a href="{% url 'wishlist:edit_plant' plant.id %}">Edit</a>
-            </li>
+            </article>
         {% empty %}
-            <li>No plants added yet.</li>
+            <p>No plants added yet.</p>
         {% endfor %}
-    </ul>
+    </section>
 
     <p>Bought</p>
-    <ul>
+    <section class="wishlist__container">
         {% for plant in purchased_plants %}
-            <li>
+            <article class="wishlist__item">
                 <p>{{ plant.name }}</p>
-                <img src="{{ plant.image_link }}" alt="img">
+                <div class="wishlist__item-image-container">
+                    <img src="{{ plant.image_link }}" alt="img">
+                </div>
                 <p>{{ plant.notes }}</p>
                 <a href="{% url 'wishlist:edit_plant' plant.id %}">Edit</a>
-            </li>
+            </article>
         {% empty %}
-            <li>No plants bought yet.</li>
+            <p>No plants bought yet.</p>
         {% endfor %}
-    </ul>
+    </section>
+
     {% endblock content %}
 </body>
 </html>
